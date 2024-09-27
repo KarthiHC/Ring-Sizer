@@ -1,0 +1,459 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ring Size Calculator</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+        /* @import url('https://fonts.googleapis.com/css2?family=Bellefair&family=Red+Hat+Text:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap'); */
+
+
+        /* Start Common CSS  */
+        html{height:100%;}
+        body{height:100%;font-family: "Montserrat", sans-serif;position:relative;padding:30px 0;margin: 0;color:#000000;background:#f9f9f9;}
+        .btn-close{position:absolute;top:20px;right:20px;width:25px;height:25px;cursor:pointer;}
+        /* End Common CSS  */
+
+        /* Start landing page */
+        #init_landing_page{}
+        #init_landing_page .company{padding-top:40px;}
+        #init_landing_page .heading{font-size: 50px;font-weight: 600;text-transform: uppercase;line-height: 60px;width:300px;}
+        #init_landing_page .heading .thin{font-weight:400}
+        #init_landing_page .subheading{font-size: 16px;color:#999999;margin:10px 0 20px 0;}
+        #init_landing_page .ring-image{max-width:220px;margin:45px 0;float:right;}
+        #init_landing_page .app-link{background-color:#ffffff;text-align:center;cursor:pointer;padding:20px 20px;border-radius:3px;display:block;color:inherit;text-decoration:none;}
+        #init_landing_page .app-link:hover{box-shadow:0 0 18px 0 #88888855;}
+        #init_landing_page .app-link .icon{width:70px;height:100px;}
+        #init_landing_page .app-link .text{font-size:16px;margin:auto;}
+        #init_landing_page .app-link .sub-text{font-size:13px;margin-top:5px;color:#888888;}
+        #init_landing_page .actions-wrapper{text-align:center;margin-top:30px;}
+        #init_landing_page .btn-change-country{font-size:12px;font-weight:400;text-decoration:none;color:#000000;}
+        #init_landing_page .btn-change-country:hover{text-decoration:underline;}
+        /* End landing page */
+
+        /* Start country change page */
+        #country_change_page{}
+        #country_change_page .heading{text-align: center;font-size:14px;font-weight:500;margin-top:20px;}
+        #country_change_page .country-list{text-align:center;}
+        #country_change_page .country-list-item{background-color:#ffffff;margin:5px;text-align:left;font-size:16px;min-width:200px;cursor:pointer;padding:20px 20px;border-radius:3px;display:inline-block;border:solid 1px #efefef;}
+        #country_change_page .country-list-item:hover{border:solid 1px #000000;}
+        #country_change_page .country-list-item img{display: inline-block;float: left;width: 25px;height: 25px;vertical-align: middle;margin-right:5px;}
+        #country_change_page .button-wrapper{text-align:center;}
+        #country_change_page .theme-btn{color:#ffffff;background:#000000;border-radius:5px;font-size:14px;border:solid 1px #000000;padding:8px 20px;font-weight:600;text-transform:uppercase;margin:30px auto;outline:none;}
+        #country_change_page .theme-btn:hover{background:#ffffff;color:#1A2D44;border-color:#000000;}
+        /* End country change page */
+
+        /* Start init calibration page */
+        /*#init_calibration_page .heading{text-align: center;font-size:14px;font-weight:500;margin-top:20px;}*/
+        #init_calibration_page .company{margin-top:10px;}
+        #init_calibration_page .company-logo{padding:5px;}
+        #init_calibration_page .company-logo img{height:25px;}
+        #init_calibration_page .heading{font-family:"Montserrat";font-size: 50px;text-transform: uppercase;line-height: 60px;width:300px;color:#1A2D44;}
+        #init_calibration_page .heading .thin{}
+        #init_calibration_page .subheading{font-size: 15px;color:#000000;margin:10px 0 20px 0;}
+        #init_calibration_page .ring-image{max-width:220px;margin:45px auto;display:block;}
+        #init_calibration_page .radio-button-section .card{border:0;margin:0;height:100%;}
+        #init_calibration_page .radio-button-section .card .radio-btn~.plan-details{border: 1px solid #000000;cursor: pointer;height:100%;display: flex;flex-direction: column;padding: 20px 20px 20px 80px;transition: border-color 0.2s ease-out;}
+        #init_calibration_page .radio-button-section .card .radio-btn{font-size: inherit;border: 1px solid #707070;position: absolute;left: calc(2em + 2px);top: 50%;margin-top:-10px;border-radius:0px;width:20px;height:20px;-webkit-appearance: none;}
+        #init_calibration_page .radio-button-section .card .radio-btn:checked{background:#000000;border:solid 1px #000000;}
+        #init_calibration_page .radio-button-section .card .radio-btn:checked:after{border: 2px solid #fff;border-top: 0;border-left: 0;content: "";display: block;height: 0.75rem;left: 4px;position: absolute;top: 8px;transform: rotate(45deg) translate(-50%, -50%);width: 0.375rem;}
+        #init_calibration_page .radio-button-section .card .plan-details .text{display: block;font-size: 14px;text-align: left;font-weight: 500;color: #000000;}
+        #init_calibration_page .radio-button-section .card .plan-details .caption{font-weight:600;}
+        #init_calibration_page .radio-button-section .card .plan-details strong{font-weight:600;}
+        #init_calibration_page .radio-button-section .separation-box{padding: 5px;display: block;font-size: 18px;font-weight: 500;color: #000000;text-align:center;}
+        #init_calibration_page .button-wrapper{text-align:center;}
+        #init_calibration_page .theme-btn{color:#ffffff;background:#000000;border-radius:5px;font-size:14px;border:solid 1px #000000;padding:8px 20px;font-weight:600;text-transform:uppercase;margin:30px auto;outline:none;}
+        #init_calibration_page .theme-btn:hover{background:#ffffff;color:#1A2D44;border-color:#000000;}
+        #init_calibration_page .printable-ring-sizer{text-align:center;font-size:14px;}
+        #init_calibration_page .printable-ring-sizer a{color:inherit;text-decoration:underline;}
+        @media (max-width: 500px) {
+            #init_calibration_page .radio-button-section .card .radio-btn {left: calc(1em + 2px);}
+            #init_calibration_page .radio-button-section .card .radio-btn~.plan-details{padding:20px 20px 20px 50px;}
+        }
+        @media (min-width: 767px) {
+            #init_calibration_page .radio-button-section .card.ruler-card .plan-details{padding:40px 20px 40px 80px;}
+            #init_calibration_page .radio-button-section .separation-box{margin-top:60px;}
+        }
+        /* End init calibration page */
+
+        /* Start card calibration page */
+        #card_calibration_page .heading{text-align: center;font-family:"Montserrat";color:#1A2D44;font-size:22px;text-transform:uppercase;margin-top:15px;}
+        #card_calibration_page .sub-heading{text-align: center;font-size:14px;font-weight:500;margin:15px 0;}
+        #card_calibration_page .sub-heading .info-icon{width:15px;margin-top:-2px;cursor:pointer;}
+        #card_calibration_page .card-image-wrapper{margin-top: 10px;overflow: hidden;height: 400px;background-image: url("images/card.svg");background-repeat: no-repeat;background-position: center 2px;}
+        #card_calibration_page .card-image-wrapper .lines{border-top:dashed 2px #5e7173;border-bottom:dashed 2px #5e7173;-ms-touch-action:none;touch-action:none;}
+        #card_calibration_page .range-progress-bar{margin:20px auto;max-width:500px;white-space: nowrap;text-align:center;}
+        #card_calibration_page .range-progress-bar::selection{background:none;}
+        #card_calibration_page .range-progress-bar .step-button{width: 50px;height: 50px;text-align:center;background: #000000;color: #ffffff;display: inline-block;vertical-align: middle;line-height: 50px;font-size: 35px;border-radius: 50%;cursor:pointer;}
+        #card_calibration_page .range-progress-bar .step-button::selection{background:none;}
+        #card_calibration_page .range-progress-bar .line{display: inline-block;width: 65%;vertical-align: middle;height: 50px;}
+        #card_calibration_page .progress {background: #000000;border: 0;height: 1px;width: 100%;outline: none;margin-top: 25px;overflow: initial;z-index: 0;transition: background 450ms ease-in;-webkit-appearance: none;}
+        #card_calibration_page .progress::-webkit-slider-thumb {width: 30px;height: 30px;z-index: 99999;border-radius: 50%;-webkit-appearance: none;cursor: ew-resize;background: #444444;}
+        #card_calibration_page .button-wrapper{text-align:center;}
+        #card_calibration_page .theme-btn{color:#ffffff;background:#000000;border-radius:5px;font-size:14px;border:solid 1px #000000;padding:8px 20px;font-weight:600;text-transform:uppercase;margin:30px auto;outline:none;}
+        #card_calibration_page .theme-btn:hover{background:#ffffff;color:#1A2D44;border-color:#000000;}
+        /* End card calibration page */
+
+        /* Start scale calibration page */
+        #scale_calibration_page .main-wrapper{overflow:hidden;}
+        #scale_calibration_page .heading{text-align: center;font-family:"Montserrat";color:#1A2D44;font-size:22px;text-transform:uppercase;margin-top:15px;}
+        #scale_calibration_page .sub-heading{text-align: center;font-size:14px;font-weight:500;margin:15px 0;}
+        #scale_calibration_page .sub-heading .info-icon{width:15px;margin-top:-2px;cursor:pointer;}
+        #scale_calibration_page .unit-tabs{display:flex;justify-content:center;cursor:default;}
+        #scale_calibration_page .unit-tabs .tab{display:inline-block;width:100px;padding:5px 10px;text-align:center;border:solid 1px #000000;}
+        #scale_calibration_page .unit-tabs .tab:first-child{border-top-left-radius: 3px;border-bottom-left-radius: 3px;}
+        #scale_calibration_page .unit-tabs .tab:last-child{border-top-right-radius: 3px;border-bottom-right-radius: 3px;}
+        #scale_calibration_page .unit-tabs .tab.active{background:#000000;color:#ffffff;}
+        #scale_calibration_page .mm-scale-image-wrapper {margin-top: 10px;overflow: hidden;height: 150px;background-image: url("images/mm-scale.svg");background-repeat: no-repeat;background-position: bottom left;}
+        #scale_calibration_page .inch-scale-image-wrapper {margin-top: 10px;overflow: hidden;height: 150px;background-image: url("images/inch-scale.svg");background-repeat: no-repeat;background-position: bottom left;}
+        #scale_calibration_page .scale-placeholder-wrapper{background:#efefef;height:150px;margin:0 0 20px 0;font-size:40px;font-weight:500;line-height:145px;border: solid 1px #cccccc;color:#999999;text-shadow:1px 1px 1px #ffffff;position:relative;white-space:nowrap;left:600;animation-duration: 1.5s;animation-name: slidein;-ms-touch-action:none;touch-action:none;}
+        #scale_calibration_page .range-progress-bar{margin:20px auto;max-width:500px;white-space: nowrap;text-align:center;}
+        #scale_calibration_page .range-progress-bar::selection{background:none;}
+        #scale_calibration_page .range-progress-bar .step-button{width: 50px;height: 50px;text-align:center;background: #000000;color: #ffffff;display: inline-block;vertical-align: middle;line-height: 50px;font-size: 35px;border-radius: 50%;cursor:pointer;}
+        #scale_calibration_page .range-progress-bar .step-button::selection{background:none;}
+        #scale_calibration_page .range-progress-bar .line{display: inline-block;width: 65%;vertical-align: middle;height: 50px;}
+        #scale_calibration_page .progress {background: #000000;border: 0;height: 1px;width: 100%;outline: none;margin-top: 25px;overflow: initial;z-index: 0;transition: background 450ms ease-in;-webkit-appearance: none;}
+        #scale_calibration_page .progress::-webkit-slider-thumb {width: 30px;height: 30px;z-index: 99999;border-radius: 50%;-webkit-appearance: none;cursor: ew-resize;background: #444444;}
+        #scale_calibration_page .theme-btn{color:#ffffff;background:#000000;border-radius:5px;font-size:14px;border:solid 1px #000000;padding:8px 20px;font-weight:600;text-transform:uppercase;margin:30px auto;outline:none;}
+        #scale_calibration_page .theme-btn:hover{background:#ffffff;color:#1A2D44;border-color:#000000;}
+        @keyframes slidein {
+            from {left: 600px;}
+            to {left: 0;}
+        }
+        @media (max-width: 500px) {
+            #scale_calibration_page .scale-placeholder-wrapper{font-size:20px;}
+        }
+        /* End scale calibration page */
+
+        /* Start Measure Your Finger page */
+        #measure_your_finger_page .heading{text-align: center;font-size:30px;font-weight:500;margin-top:140px;}
+        #measure_your_finger_page .button-wrapper{text-align:center;}
+        #measure_your_finger_page .theme-btn{color:#000000;background:#ffffff;border-radius:3px;font-size:14px;border:solid 1px #000000;padding:7px 15px;text-transform:uppercase;margin:30px auto;outline:none;}
+        #measure_your_finger_page .theme-btn:hover{background:#000000;color:#ffffff;}
+        /* End Measure Your Finger page */
+
+        /* Start Convert from Other Units page */
+        #convert_from_other_units_page .heading{text-align: center;font-size:30px;font-weight:500;margin-top:140px;}
+        #convert_from_other_units_page .button-wrapper{text-align:center;}
+        #convert_from_other_units_page .theme-btn{color:#000000;background:#ffffff;border-radius:3px;font-size:14px;border:solid 1px #000000;padding:7px 15px;text-transform:uppercase;margin:30px auto;outline:none;}
+        #convert_from_other_units_page .theme-btn:hover{background:#000000;color:#ffffff;}
+        /* End Convert from Other Units page */
+
+        /* Start ring size calculator_page */
+        #ring_size_calculator_page .heading{text-align: center;font-family:"Montserrat";color:#1A2D44;font-size:22px;text-transform:uppercase;margin-top:15px;}
+        #ring_size_calculator_page .sub-heading{text-align: center;font-size:14px;font-weight:500;margin:15px 0;}
+        #ring_size_calculator_page .sub-heading .info-icon{width:15px;margin-top:-2px;cursor:pointer;}
+        #ring_size_calculator_page .ring-sizer-wrapper{height: 225px;width: 300px;margin: auto;overflow:hidden;display: flex;align-items: center;border:solid 1px #c6c6c6;background:url("images/grid.svg") center center repeat;-ms-touch-action:none;touch-action:none;}
+        #ring_size_calculator_page .ring-sizer-wrapper .ring-sizer{position:relative;border-radius: 50%;background:url("images/arrows.svg") #dedede center center no-repeat;background-size:cover;height: 80px;width: 80px;margin: 0 auto;text-align: center;display: block;max-width: 180px;max-height: 180px;border:solid 1px #5e7173;}
+        #ring_size_calculator_page .ring-sizer-wrapper .ring-sizer .left-line{position: absolute;width: 1px;border-left: dashed 1px #5e7173;height: 500px;top: -200px;left:-2px;}
+        #ring_size_calculator_page .ring-sizer-wrapper .ring-sizer .top-line{position: absolute;height: 1px;border-top: dashed 1px #5e7173;width: 500px;left: -200px;top:-2px;}
+        #ring_size_calculator_page .ring-sizer-wrapper .ring-sizer .right-line{position: absolute;width: 1px;border-right: dashed 1px #5e7173;height: 500px;top: -200px;right:-2px;}
+        #ring_size_calculator_page .ring-sizer-wrapper .ring-sizer .bottom-line{position: absolute;height: 1px;border-bottom: dashed 1px #5e7173;width: 500px;left: -200px;bottom:-2px;}
+        #ring_size_calculator_page .message{font-size:12px;font-style:italic;font-weight:400;}
+        #ring_size_calculator_page .range-progress-bar{margin:20px auto;max-width:500px;white-space: nowrap;}
+        #ring_size_calculator_page .range-progress-bar::selection{background:none;}
+        #ring_size_calculator_page .range-progress-bar .step-button{width: 50px;height: 50px;text-align:center;background: #000000;color: #ffffff;display: inline-block;vertical-align: middle;line-height: 50px;font-size: 35px;border-radius: 50%;cursor:pointer;}
+        #ring_size_calculator_page .range-progress-bar .step-button::selection{background:none;}
+        #ring_size_calculator_page .range-progress-bar .line{display: inline-block;width: 65%;vertical-align: middle;height: 50px;}
+        #ring_size_calculator_page .progress {background: #000000;border: 0;height: 1px;width: 100%;outline: none;margin-top: 25px;overflow: initial;z-index: 0;transition: background 450ms ease-in;-webkit-appearance: none;}
+        #ring_size_calculator_page .progress::-webkit-slider-thumb {width: 30px;height: 30px;z-index: 99999;border-radius: 50%;-webkit-appearance: none;cursor: ew-resize;background: #444444;}
+        #ring_size_calculator_page .size-wrapper{margin-top:10px;}
+        #ring_size_calculator_page .size-wrapper p{font-size:14px;margin:0;}
+        #ring_size_calculator_page .disclaimer{font-size: 12px;padding:10px;margin: 20px auto 10px auto;border:dashed 1px #000;max-width:400px;background: #dedede;}
+        #ring_size_calculator_page .disclaimer strong{font-weight: 600;}
+        #ring_size_calculator_page .ring-measurement-wrapper{width:250px;margin: auto;}
+        #ring_size_calculator_page .ring-measurement-wrapper .us-ring-size-caption{display:inline-block;width:120px;}
+        #ring_size_calculator_page .ring-measurement-wrapper .us-ring-size-caption .country-flag{display:inline-block;width:15px;height:15px;vertical-align: middle;border-radius:50%;}
+        #ring_size_calculator_page .ring-measurement-wrapper .us-ring-size-caption .country-caption{display:inline-block;vertical-align: middle;}
+        #ring_size_calculator_page .ring-measurement-wrapper .us-ring-size-caption .us-ring-size{border:solid 1px #000000;display:inline-block;padding:3px 10px;width:60px;font-weight:500;}
+        #ring_size_calculator_page .ring-measurement-wrapper .ring-size-caption{display:inline-block;width:120px;}
+        #ring_size_calculator_page .ring-measurement-wrapper .ring-size-caption .country-flag{display:inline-block;width:15px;height:15px;vertical-align: middle;border-radius:50%;}
+        #ring_size_calculator_page .ring-measurement-wrapper .ring-size-caption .country-caption{display:inline-block;vertical-align: middle;}
+        #ring_size_calculator_page .ring-measurement-wrapper .ring-size-caption .ring-size{border:solid 1px #000000;border-radius:5px;display:inline-block;padding:3px 10px;width:60px;font-weight:500;}
+        #ring_size_calculator_page .actions-wrapper{margin-top:20px;}
+        #ring_size_calculator_page .btn-recalibrate{font-size:12px;font-weight:400;text-decoration:none;color:#000000;}
+        #ring_size_calculator_page .btn-recalibrate:hover{text-decoration:underline;color:#000000;}
+        #ring_size_calculator_page .btn-change-country{font-size:12px;font-weight:400;text-decoration:none;color:#000000;}
+        #ring_size_calculator_page .btn-change-country:hover{text-decoration:underline;color:#000000;}
+        /* End ring size calculator_page */
+
+        /* Video Guide Modal */
+        .video-guide{position:absolute;top:0;left:0;bottom:0;right:0;padding:50px 0;text-align:center;margin:auto;z-index:1;background:#00000044;}
+        .video-guide .video{max-width:440px;padding:20px;background:#ffffff;border-radius:5px;box-shadow:0 0 4px 1px #919191;margin:auto;}
+        .video-guide .video img{max-width:100%;}
+        .video-guide .video video{max-width:100%;}
+        .video-guide .video .btn-gotit{display:inline-block;padding:5px 10px;border:solid 1px #000000;border-radius:3px;font-size:16px;font-weight:600;margin-top:15px;text-transform:uppercase;cursor:pointer;}
+        .video-guide .video .btn-gotit:hover{color:#ffffff;background:#000000;}
+        /*-------------------*/
+
+    </style>
+    <script>
+        var ringSizeMapping = [{"diameterMM":14.1,"circumferenceMM":44.3,"ringSize":"3","country":"US"},{"diameterMM":14.3,"circumferenceMM":null,"ringSize":"3.25","country":"US"},{"diameterMM":14.5,"circumferenceMM":null,"ringSize":"3.50","country":"US"},{"diameterMM":14.7,"circumferenceMM":null,"ringSize":"3.75","country":"US"},{"diameterMM":14.9,"circumferenceMM":null,"ringSize":"4","country":"US"},{"diameterMM":15.1,"circumferenceMM":null,"ringSize":"4.25","country":"US"},{"diameterMM":15.3,"circumferenceMM":null,"ringSize":"4.50","country":"US"},{"diameterMM":15.5,"circumferenceMM":null,"ringSize":"4.75","country":"US"},{"diameterMM":15.7,"circumferenceMM":null,"ringSize":"5","country":"US"},{"diameterMM":15.9,"circumferenceMM":null,"ringSize":"5.25","country":"US"},{"diameterMM":16.1,"circumferenceMM":null,"ringSize":"5.50","country":"US"},{"diameterMM":16.3,"circumferenceMM":null,"ringSize":"5.75","country":"US"},{"diameterMM":16.5,"circumferenceMM":null,"ringSize":"6","country":"US"},{"diameterMM":16.7,"circumferenceMM":null,"ringSize":"6.25","country":"US"},{"diameterMM":16.9,"circumferenceMM":null,"ringSize":"6.50","country":"US"},{"diameterMM":17.1,"circumferenceMM":null,"ringSize":"6.75","country":"US"},{"diameterMM":17.3,"circumferenceMM":null,"ringSize":"7","country":"US"},{"diameterMM":17.5,"circumferenceMM":null,"ringSize":"7.25","country":"US"},{"diameterMM":17.7,"circumferenceMM":null,"ringSize":"7.50","country":"US"},{"diameterMM":17.9,"circumferenceMM":null,"ringSize":"7.75","country":"US"},{"diameterMM":18.1,"circumferenceMM":null,"ringSize":"8","country":"US"},{"diameterMM":18.3,"circumferenceMM":null,"ringSize":"8.25","country":"US"},{"diameterMM":18.5,"circumferenceMM":null,"ringSize":"8.50","country":"US"},{"diameterMM":18.8,"circumferenceMM":null,"ringSize":"8.75","country":"US"},{"diameterMM":19,"circumferenceMM":null,"ringSize":"9","country":"US"},{"diameterMM":19.2,"circumferenceMM":null,"ringSize":"9.25","country":"US"},{"diameterMM":19.4,"circumferenceMM":null,"ringSize":"9.50","country":"US"},{"diameterMM":19.6,"circumferenceMM":null,"ringSize":"9.75","country":"US"},{"diameterMM":19.8,"circumferenceMM":null,"ringSize":"10","country":"US"},{"diameterMM":20,"circumferenceMM":null,"ringSize":"10.25","country":"US"},{"diameterMM":20.2,"circumferenceMM":null,"ringSize":"10.50","country":"US"},{"diameterMM":20.4,"circumferenceMM":null,"ringSize":"10.75","country":"US"},{"diameterMM":20.6,"circumferenceMM":null,"ringSize":"11","country":"US"},{"diameterMM":20.8,"circumferenceMM":null,"ringSize":"11.25","country":"US"},{"diameterMM":21,"circumferenceMM":null,"ringSize":"11.50","country":"US"},{"diameterMM":21.2,"circumferenceMM":null,"ringSize":"11.75","country":"US"},{"diameterMM":21.4,"circumferenceMM":null,"ringSize":"12","country":"US"},{"diameterMM":21.6,"circumferenceMM":null,"ringSize":"12.25","country":"US"},{"diameterMM":21.8,"circumferenceMM":null,"ringSize":"12.50","country":"US"},{"diameterMM":22,"circumferenceMM":null,"ringSize":"12.75","country":"US"},{"diameterMM":22.2,"circumferenceMM":null,"ringSize":"13","country":"US"},{"diameterMM":14.1,"circumferenceMM":44.3,"ringSize":"3","country":"CA"},{"diameterMM":14.3,"circumferenceMM":null,"ringSize":"3\u00bc","country":"CA"},{"diameterMM":14.5,"circumferenceMM":null,"ringSize":"3\u00bd","country":"CA"},{"diameterMM":14.7,"circumferenceMM":null,"ringSize":"3\u00be","country":"CA"},{"diameterMM":14.9,"circumferenceMM":null,"ringSize":"4","country":"CA"},{"diameterMM":15.1,"circumferenceMM":null,"ringSize":"4\u00bc","country":"CA"},{"diameterMM":15.3,"circumferenceMM":null,"ringSize":"4\u00bd","country":"CA"},{"diameterMM":15.5,"circumferenceMM":null,"ringSize":"4\u00be","country":"CA"},{"diameterMM":15.7,"circumferenceMM":null,"ringSize":"5","country":"CA"},{"diameterMM":15.9,"circumferenceMM":null,"ringSize":"5\u00bc","country":"CA"},{"diameterMM":16.1,"circumferenceMM":null,"ringSize":"5\u00bd","country":"CA"},{"diameterMM":16.3,"circumferenceMM":null,"ringSize":"5\u00be","country":"CA"},{"diameterMM":16.5,"circumferenceMM":null,"ringSize":"6","country":"CA"},{"diameterMM":16.7,"circumferenceMM":null,"ringSize":"6\u00bc","country":"CA"},{"diameterMM":16.9,"circumferenceMM":null,"ringSize":"6\u00bd","country":"CA"},{"diameterMM":17.1,"circumferenceMM":null,"ringSize":"6\u00be","country":"CA"},{"diameterMM":17.3,"circumferenceMM":null,"ringSize":"7","country":"CA"},{"diameterMM":17.5,"circumferenceMM":null,"ringSize":"7\u00bc","country":"CA"},{"diameterMM":17.7,"circumferenceMM":null,"ringSize":"7\u00bd","country":"CA"},{"diameterMM":17.9,"circumferenceMM":null,"ringSize":"7\u00be","country":"CA"},{"diameterMM":18.1,"circumferenceMM":null,"ringSize":"8","country":"CA"},{"diameterMM":18.3,"circumferenceMM":null,"ringSize":"8\u00bc","country":"CA"},{"diameterMM":18.5,"circumferenceMM":null,"ringSize":"8\u00bd","country":"CA"},{"diameterMM":18.8,"circumferenceMM":null,"ringSize":"8\u00be","country":"CA"},{"diameterMM":19,"circumferenceMM":null,"ringSize":"9","country":"CA"},{"diameterMM":19.2,"circumferenceMM":null,"ringSize":"9\u00bc","country":"CA"},{"diameterMM":19.4,"circumferenceMM":null,"ringSize":"9\u00bd","country":"CA"},{"diameterMM":19.6,"circumferenceMM":null,"ringSize":"9\u00be","country":"CA"},{"diameterMM":19.8,"circumferenceMM":null,"ringSize":"10","country":"CA"},{"diameterMM":20,"circumferenceMM":null,"ringSize":"10\u00bc","country":"CA"},{"diameterMM":20.2,"circumferenceMM":null,"ringSize":"10\u00bd","country":"CA"},{"diameterMM":20.4,"circumferenceMM":null,"ringSize":"10\u00be","country":"CA"},{"diameterMM":20.6,"circumferenceMM":null,"ringSize":"11","country":"CA"},{"diameterMM":20.8,"circumferenceMM":null,"ringSize":"11\u00bc","country":"CA"},{"diameterMM":21,"circumferenceMM":null,"ringSize":"11\u00bd","country":"CA"},{"diameterMM":21.2,"circumferenceMM":null,"ringSize":"11\u00be","country":"CA"},{"diameterMM":21.4,"circumferenceMM":null,"ringSize":"12","country":"CA"},{"diameterMM":21.6,"circumferenceMM":null,"ringSize":"12\u00bc","country":"CA"},{"diameterMM":21.8,"circumferenceMM":null,"ringSize":"12\u00bd","country":"CA"},{"diameterMM":22,"circumferenceMM":null,"ringSize":"12\u00be","country":"CA"},{"diameterMM":22.2,"circumferenceMM":null,"ringSize":"13","country":"CA"},{"diameterMM":14.1,"circumferenceMM":null,"ringSize":"F","country":"GB"},{"diameterMM":14.3,"circumferenceMM":null,"ringSize":"F.5","country":"GB"},{"diameterMM":14.5,"circumferenceMM":null,"ringSize":"G","country":"GB"},{"diameterMM":14.7,"circumferenceMM":null,"ringSize":"G.5","country":"GB"},{"diameterMM":14.9,"circumferenceMM":null,"ringSize":"H","country":"GB"},{"diameterMM":15.1,"circumferenceMM":null,"ringSize":"H.5","country":"GB"},{"diameterMM":15.3,"circumferenceMM":null,"ringSize":"I","country":"GB"},{"diameterMM":15.5,"circumferenceMM":null,"ringSize":"I.5","country":"GB"},{"diameterMM":15.7,"circumferenceMM":null,"ringSize":"J","country":"GB"},{"diameterMM":15.9,"circumferenceMM":null,"ringSize":"J.5","country":"GB"},{"diameterMM":16.1,"circumferenceMM":null,"ringSize":"K","country":"GB"},{"diameterMM":16.3,"circumferenceMM":null,"ringSize":"K.5","country":"GB"},{"diameterMM":16.5,"circumferenceMM":null,"ringSize":"L","country":"GB"},{"diameterMM":16.7,"circumferenceMM":null,"ringSize":"L.5","country":"GB"},{"diameterMM":16.9,"circumferenceMM":null,"ringSize":"M","country":"GB"},{"diameterMM":17.1,"circumferenceMM":null,"ringSize":"M.5","country":"GB"},{"diameterMM":17.3,"circumferenceMM":null,"ringSize":"N","country":"GB"},{"diameterMM":17.5,"circumferenceMM":null,"ringSize":"N.5","country":"GB"},{"diameterMM":17.7,"circumferenceMM":null,"ringSize":"O","country":"GB"},{"diameterMM":17.9,"circumferenceMM":null,"ringSize":"O.5","country":"GB"},{"diameterMM":18.1,"circumferenceMM":null,"ringSize":"P","country":"GB"},{"diameterMM":18.3,"circumferenceMM":null,"ringSize":"P.5","country":"GB"},{"diameterMM":18.5,"circumferenceMM":null,"ringSize":"Q","country":"GB"},{"diameterMM":18.8,"circumferenceMM":null,"ringSize":"Q.5","country":"GB"},{"diameterMM":19,"circumferenceMM":null,"ringSize":"R","country":"GB"},{"diameterMM":19.2,"circumferenceMM":null,"ringSize":"R.5","country":"GB"},{"diameterMM":19.4,"circumferenceMM":null,"ringSize":"S","country":"GB"},{"diameterMM":19.6,"circumferenceMM":null,"ringSize":"S.5","country":"GB"},{"diameterMM":19.8,"circumferenceMM":null,"ringSize":"T","country":"GB"},{"diameterMM":20,"circumferenceMM":null,"ringSize":"T.5","country":"GB"},{"diameterMM":20.2,"circumferenceMM":null,"ringSize":"U","country":"GB"},{"diameterMM":20.4,"circumferenceMM":null,"ringSize":"U.5","country":"GB"},{"diameterMM":20.6,"circumferenceMM":null,"ringSize":"V","country":"GB"},{"diameterMM":20.8,"circumferenceMM":null,"ringSize":"V.5","country":"GB"},{"diameterMM":21,"circumferenceMM":null,"ringSize":"W","country":"GB"},{"diameterMM":21.2,"circumferenceMM":null,"ringSize":"W.5","country":"GB"},{"diameterMM":21.4,"circumferenceMM":null,"ringSize":"X","country":"GB"},{"diameterMM":21.6,"circumferenceMM":null,"ringSize":"X.5","country":"GB"},{"diameterMM":21.8,"circumferenceMM":null,"ringSize":"Y","country":"GB"},{"diameterMM":22,"circumferenceMM":null,"ringSize":"Z","country":"GB"},{"diameterMM":22.2,"circumferenceMM":null,"ringSize":"Z.5","country":"GB"},{"diameterMM":14.1,"circumferenceMM":null,"ringSize":"F","country":"AU"},{"diameterMM":14.3,"circumferenceMM":null,"ringSize":"F.5","country":"AU"},{"diameterMM":14.5,"circumferenceMM":null,"ringSize":"G","country":"AU"},{"diameterMM":14.7,"circumferenceMM":null,"ringSize":"G.5","country":"AU"},{"diameterMM":14.9,"circumferenceMM":null,"ringSize":"H","country":"AU"},{"diameterMM":15.1,"circumferenceMM":null,"ringSize":"H.5","country":"AU"},{"diameterMM":15.3,"circumferenceMM":null,"ringSize":"I","country":"AU"},{"diameterMM":15.5,"circumferenceMM":null,"ringSize":"I.5","country":"AU"},{"diameterMM":15.7,"circumferenceMM":null,"ringSize":"J","country":"AU"},{"diameterMM":15.9,"circumferenceMM":null,"ringSize":"J.5","country":"AU"},{"diameterMM":16.1,"circumferenceMM":null,"ringSize":"K","country":"AU"},{"diameterMM":16.3,"circumferenceMM":null,"ringSize":"K.5","country":"AU"},{"diameterMM":16.5,"circumferenceMM":null,"ringSize":"L","country":"AU"},{"diameterMM":16.7,"circumferenceMM":null,"ringSize":"L.5","country":"AU"},{"diameterMM":16.9,"circumferenceMM":null,"ringSize":"M","country":"AU"},{"diameterMM":17.1,"circumferenceMM":null,"ringSize":"M.5","country":"AU"},{"diameterMM":17.3,"circumferenceMM":null,"ringSize":"N","country":"AU"},{"diameterMM":17.5,"circumferenceMM":null,"ringSize":"N.5","country":"AU"},{"diameterMM":17.7,"circumferenceMM":null,"ringSize":"O","country":"AU"},{"diameterMM":17.9,"circumferenceMM":null,"ringSize":"O.5","country":"AU"},{"diameterMM":18.1,"circumferenceMM":null,"ringSize":"P","country":"AU"},{"diameterMM":18.3,"circumferenceMM":null,"ringSize":"P.5","country":"AU"},{"diameterMM":18.5,"circumferenceMM":null,"ringSize":"Q","country":"AU"},{"diameterMM":18.8,"circumferenceMM":null,"ringSize":"Q.5","country":"AU"},{"diameterMM":19,"circumferenceMM":null,"ringSize":"R","country":"AU"},{"diameterMM":19.2,"circumferenceMM":null,"ringSize":"R.5","country":"AU"},{"diameterMM":19.4,"circumferenceMM":null,"ringSize":"S","country":"AU"},{"diameterMM":19.6,"circumferenceMM":null,"ringSize":"S.5","country":"AU"},{"diameterMM":19.8,"circumferenceMM":null,"ringSize":"T","country":"AU"},{"diameterMM":20,"circumferenceMM":null,"ringSize":"T.5","country":"AU"},{"diameterMM":20.2,"circumferenceMM":null,"ringSize":"U","country":"AU"},{"diameterMM":20.4,"circumferenceMM":null,"ringSize":"U.5","country":"AU"},{"diameterMM":20.6,"circumferenceMM":null,"ringSize":"V","country":"AU"},{"diameterMM":20.8,"circumferenceMM":null,"ringSize":"V.5","country":"AU"},{"diameterMM":21,"circumferenceMM":null,"ringSize":"W","country":"AU"},{"diameterMM":21.2,"circumferenceMM":null,"ringSize":"W.5","country":"AU"},{"diameterMM":21.4,"circumferenceMM":null,"ringSize":"X","country":"AU"},{"diameterMM":21.6,"circumferenceMM":null,"ringSize":"X.5","country":"AU"},{"diameterMM":21.8,"circumferenceMM":null,"ringSize":"Y","country":"AU"},{"diameterMM":22,"circumferenceMM":null,"ringSize":"Z","country":"AU"},{"diameterMM":22.2,"circumferenceMM":null,"ringSize":"Z.5","country":"AU"},{"diameterMM":14.1,"circumferenceMM":null,"ringSize":"44","country":"EU"},{"diameterMM":14.3,"circumferenceMM":null,"ringSize":"45","country":"EU"},{"diameterMM":14.7,"circumferenceMM":null,"ringSize":"46","country":"EU"},{"diameterMM":14.9,"circumferenceMM":null,"ringSize":"47","country":"EU"},{"diameterMM":15.3,"circumferenceMM":null,"ringSize":"48","country":"EU"},{"diameterMM":15.7,"circumferenceMM":null,"ringSize":"49","country":"EU"},{"diameterMM":15.9,"circumferenceMM":null,"ringSize":"50","country":"EU"},{"diameterMM":16.3,"circumferenceMM":null,"ringSize":"51","country":"EU"},{"diameterMM":16.5,"circumferenceMM":null,"ringSize":"52","country":"EU"},{"diameterMM":16.9,"circumferenceMM":null,"ringSize":"53","country":"EU"},{"diameterMM":17.3,"circumferenceMM":null,"ringSize":"54","country":"EU"},{"diameterMM":17.5,"circumferenceMM":null,"ringSize":"55","country":"EU"},{"diameterMM":17.9,"circumferenceMM":null,"ringSize":"56","country":"EU"},{"diameterMM":18.1,"circumferenceMM":null,"ringSize":"57","country":"EU"},{"diameterMM":18.5,"circumferenceMM":null,"ringSize":"58","country":"EU"},{"diameterMM":18.8,"circumferenceMM":null,"ringSize":"59","country":"EU"},{"diameterMM":19.2,"circumferenceMM":null,"ringSize":"60","country":"EU"},{"diameterMM":19.4,"circumferenceMM":null,"ringSize":"61","country":"EU"},{"diameterMM":19.8,"circumferenceMM":null,"ringSize":"62","country":"EU"},{"diameterMM":20.2,"circumferenceMM":null,"ringSize":"63","country":"EU"},{"diameterMM":20.4,"circumferenceMM":null,"ringSize":"64","country":"EU"},{"diameterMM":20.8,"circumferenceMM":null,"ringSize":"65","country":"EU"},{"diameterMM":21,"circumferenceMM":null,"ringSize":"66","country":"EU"},{"diameterMM":21.4,"circumferenceMM":null,"ringSize":"67","country":"EU"},{"diameterMM":21.8,"circumferenceMM":null,"ringSize":"68","country":"EU"},{"diameterMM":22,"circumferenceMM":null,"ringSize":"69","country":"EU"},{"diameterMM":22.2,"circumferenceMM":null,"ringSize":"70","country":"EU"},{"diameterMM":14.1,"circumferenceMM":null,"ringSize":"4","country":"JP"},{"diameterMM":14.3,"circumferenceMM":null,"ringSize":"5","country":"JP"},{"diameterMM":14.7,"circumferenceMM":null,"ringSize":"6","country":"JP"},{"diameterMM":14.9,"circumferenceMM":null,"ringSize":"7","country":"JP"},{"diameterMM":15.3,"circumferenceMM":null,"ringSize":"8","country":"JP"},{"diameterMM":15.7,"circumferenceMM":null,"ringSize":"9","country":"JP"},{"diameterMM":16.1,"circumferenceMM":null,"ringSize":"10","country":"JP"},{"diameterMM":16.5,"circumferenceMM":null,"ringSize":"11","country":"JP"},{"diameterMM":16.7,"circumferenceMM":null,"ringSize":"12","country":"JP"},{"diameterMM":16.9,"circumferenceMM":null,"ringSize":"13","country":"JP"},{"diameterMM":17.3,"circumferenceMM":null,"ringSize":"14","country":"JP"},{"diameterMM":17.7,"circumferenceMM":null,"ringSize":"15","country":"JP"},{"diameterMM":18.1,"circumferenceMM":null,"ringSize":"16","country":"JP"},{"diameterMM":18.5,"circumferenceMM":null,"ringSize":"17","country":"JP"},{"diameterMM":19,"circumferenceMM":null,"ringSize":"18","country":"JP"},{"diameterMM":19.4,"circumferenceMM":null,"ringSize":"19","country":"JP"},{"diameterMM":19.8,"circumferenceMM":null,"ringSize":"20","country":"JP"},{"diameterMM":20,"circumferenceMM":null,"ringSize":"21","country":"JP"},{"diameterMM":20.2,"circumferenceMM":null,"ringSize":"22","country":"JP"},{"diameterMM":20.6,"circumferenceMM":null,"ringSize":"23","country":"JP"},{"diameterMM":21,"circumferenceMM":null,"ringSize":"24","country":"JP"},{"diameterMM":21.4,"circumferenceMM":null,"ringSize":"25","country":"JP"},{"diameterMM":21.8,"circumferenceMM":null,"ringSize":"26","country":"JP"},{"diameterMM":22.2,"circumferenceMM":null,"ringSize":"27","country":"JP"},{"diameterMM":14.1,"circumferenceMM":null,"ringSize":"4","country":"NL"},{"diameterMM":14.3,"circumferenceMM":null,"ringSize":"5.25","country":"NL"},{"diameterMM":14.7,"circumferenceMM":null,"ringSize":"6\u00bd","country":"NL"},{"diameterMM":15.1,"circumferenceMM":null,"ringSize":"7\u00be","country":"NL"},{"diameterMM":15.5,"circumferenceMM":null,"ringSize":"9","country":"NL"},{"diameterMM":15.9,"circumferenceMM":null,"ringSize":"10","country":"NL"},{"diameterMM":16.3,"circumferenceMM":null,"ringSize":"11\u00be","country":"NL"},{"diameterMM":16.5,"circumferenceMM":null,"ringSize":"12\u00be","country":"NL"},{"diameterMM":16.9,"circumferenceMM":null,"ringSize":"14","country":"NL"},{"diameterMM":17.3,"circumferenceMM":null,"ringSize":"15\u00bc","country":"NL"},{"diameterMM":17.7,"circumferenceMM":null,"ringSize":"16\u00bd","country":"NL"},{"diameterMM":18.1,"circumferenceMM":null,"ringSize":"17\u00be","country":"NL"},{"diameterMM":18.8,"circumferenceMM":null,"ringSize":"19","country":"NL"},{"diameterMM":19.2,"circumferenceMM":null,"ringSize":"20\u00bc","country":"NL"},{"diameterMM":19.6,"circumferenceMM":null,"ringSize":"21\u00bd","country":"NL"},{"diameterMM":20.2,"circumferenceMM":null,"ringSize":"22\u00be","country":"NL"},{"diameterMM":20.8,"circumferenceMM":null,"ringSize":"25","country":"NL"},{"diameterMM":21,"circumferenceMM":null,"ringSize":"24","country":"NL"},{"diameterMM":21.4,"circumferenceMM":null,"ringSize":"27\u00bd","country":"NL"},{"diameterMM":21.8,"circumferenceMM":null,"ringSize":"28\u00be","country":"NL"},{"diameterMM":13.1,"circumferenceMM":null,"ringSize":"1","country":"IN"},{"diameterMM":13.3,"circumferenceMM":null,"ringSize":"2","country":"IN"},{"diameterMM":13.7,"circumferenceMM":null,"ringSize":"3","country":"IN"},{"diameterMM":13.9,"circumferenceMM":null,"ringSize":"4","country":"IN"},{"diameterMM":14.3,"circumferenceMM":null,"ringSize":"5","country":"IN"},{"diameterMM":14.7,"circumferenceMM":null,"ringSize":"6","country":"IN"},{"diameterMM":15.1,"circumferenceMM":null,"ringSize":"7","country":"IN"},{"diameterMM":15.3,"circumferenceMM":null,"ringSize":"8","country":"IN"},{"diameterMM":15.5,"circumferenceMM":null,"ringSize":"9","country":"IN"},{"diameterMM":15.9,"circumferenceMM":null,"ringSize":"10","country":"IN"},{"diameterMM":16.3,"circumferenceMM":null,"ringSize":"11","country":"IN"},{"diameterMM":16.5,"circumferenceMM":null,"ringSize":"12","country":"IN"},{"diameterMM":16.9,"circumferenceMM":null,"ringSize":"13","country":"IN"},{"diameterMM":17.3,"circumferenceMM":null,"ringSize":"14","country":"IN"},{"diameterMM":17.5,"circumferenceMM":null,"ringSize":"15","country":"IN"},{"diameterMM":17.9,"circumferenceMM":null,"ringSize":"16","country":"IN"},{"diameterMM":18.1,"circumferenceMM":null,"ringSize":"17","country":"IN"},{"diameterMM":18.5,"circumferenceMM":null,"ringSize":"18","country":"IN"},{"diameterMM":18.8,"circumferenceMM":null,"ringSize":"19","country":"IN"},{"diameterMM":19.2,"circumferenceMM":null,"ringSize":"20","country":"IN"},{"diameterMM":19.4,"circumferenceMM":null,"ringSize":"21","country":"IN"},{"diameterMM":19.8,"circumferenceMM":null,"ringSize":"22","country":"IN"},{"diameterMM":20,"circumferenceMM":null,"ringSize":"23","country":"IN"},{"diameterMM":20.4,"circumferenceMM":null,"ringSize":"24","country":"IN"},{"diameterMM":20.6,"circumferenceMM":null,"ringSize":"25","country":"IN"},{"diameterMM":21,"circumferenceMM":null,"ringSize":"26","country":"IN"},{"diameterMM":21.4,"circumferenceMM":null,"ringSize":"27","country":"IN"},{"diameterMM":21.6,"circumferenceMM":null,"ringSize":"28","country":"IN"},{"diameterMM":22,"circumferenceMM":null,"ringSize":"29","country":"IN"},{"diameterMM":22.3,"circumferenceMM":null,"ringSize":"30","country":"IN"}];
+        var countryCode = "US";
+        var flagsURL = "https://ringsizer.grownbrilliance.com/images/flags/";
+        function close_iframe() {
+            parent.postMessage('close_iframe', '*');
+        }
+    </script>
+</head>
+<body>
+
+<!-- Start Close Button -->
+<img src="images/close-icon.svg" class="btn-close" alt="Close" onclick="close_iframe();">
+<!-- End Close Button -->
+
+<!-- Start Init Landing Page -->
+<section id="init_landing_page" class="page" style="display:none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                
+                <div class="company-logo"><img src="images/haute-carat.svg" alt="Haute Carat"></div>
+                <div class="heading"><span class="thin">Digital</span> Ring Sizer</div>
+                <div class="subheading">Choose how you'd like to find your ring size</div>
+            </div>
+            <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-none d-md-block">
+                <img src="images/ring-image.png" class="ring-image" alt="Ring">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div class="app-link" data-page="ring_size_calculator_page">
+                            <img src="images/use-a-ring-that-fits-icon.svg" class="icon" alt="Use a ring that fits">
+                            <div class="text">Find size using<br>an existing ring!</div>
+                            <div class="sub-text">Use existing ring <img src="images/right-arrow-icon.svg" alt="Right arrow"></div>
+                        </div>
+                    </div>
+                                                            <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <a class="app-link" href="https://www.grownbrilliance.com/images/ringsizer-guide.pdf" target="_blank">
+                            <img src="images/printable-ring-sizer.svg" class="icon" alt="Use the printable ring sizer">
+                            <div class="text">Printable<br>ring sizer</div>
+                            <div class="sub-text">Download our PDF <img src="images/right-arrow-icon.svg" alt="Right arrow"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="actions-wrapper">
+                    <a href="#" class="btn-change-country">Change Country (<span class="country-name">United States</span>)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Init Landing Page  -->
+
+<div id="country_change_page" class="page" style="display:none;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 col-12">
+                <div class="main-wrapper">
+                    <p class="heading">
+                        Select your country from the below list for which you want to find the ring size.
+                    </p>
+                    <div class="country-list">
+                                                    <div class="country-list-item" data-code="US" data-image="united-states.svg"><img src="images/united-states.svg" alt="United States">United States</div>
+                                                    <div class="country-list-item" data-code="CA" data-image="canada.svg"><img src="images/canada.svg" alt="Canada">Canada</div>
+                                                    <div class="country-list-item" data-code="NL" data-image="netherlands.svg"><img src="images/netherlands.svg" alt="Netherlands">Netherlands</div>
+                                                    <div class="country-list-item" data-code="GB" data-image="united-kingdom.svg"><img src="images/united-kingdom.svg" alt="United Kingdom">United Kingdom</div>
+                                                    <div class="country-list-item" data-code="EU" data-image="european-union.svg"><img src="images/european-union.svg" alt="Europe">Europe</div>
+                                                    <div class="country-list-item" data-code="JP" data-image="japan.svg"><img src="images/japan.svg" alt="Japan">Japan</div>
+                                                    <div class="country-list-item" data-code="AU" data-image="australia.svg"><img src="images/australia.svg" alt="Australia">Australia</div>
+                                                    <div class="country-list-item" data-code="IN" data-image="india.svg"><img src="images/india.svg" alt="India">India</div>
+                                            </div>
+                    <div class="button-wrapper">
+                        <button class="theme-btn btn-go-to-back">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Start Init Calibration Page -->
+<section id="init_calibration_page" class="page" style="display:none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                
+                <div class="company-logo"><img src="images/haute-carat.svg" alt="Haute Carat"></div>
+                <div class="heading"><span class="thin">Digital</span> Ring Sizer</div>
+                <div class="subheading">Find your ring size by using one of your rings that fits properly. Choose how you’d like to find your ring size with our on-screen ring size chart. Works on both desktop and mobile.</div>
+            </div>
+            <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-none d-md-block">
+                <img src="images/ring-image.png" class="ring-image" alt="Ring">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 col-12">
+                <div class="main-wrapper">
+                    <div class="row radio-button-section">
+                        <div class="col-md-5 col-lg-4 col-sm-12 col-xs-12 col-12 offset-lg-1">
+                            <label class="card cc-dc-card">
+                                <input name="calibration_type" class="radio-btn" type="radio" value="card" checked="">
+                                <span class="plan-details">
+                                    <span class="text"><div class="caption">Option 1</div>Use any <strong>Credit or Debit Card</strong> to Determine Your Screen Dimensions<br>(no purchase necessary)</span>
+                                </span>
+                            </label>
+                        </div>
+                                                    <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 col-12"><span class="separation-box">or</span></div>
+                            <div class="col-md-5 col-lg-4 col-sm-12 col-xs-12 col-12">
+                                <label class="card ruler-card">
+                                    <input name="calibration_type" class="radio-btn" value="scale" type="radio">
+                                    <span class="plan-details">
+                                        <span class="text"><div class="caption">Option 2</div>Use a <strong>Ruler</strong> to Determine Your Screen Dimensions</span>
+                                    </span>
+                                </label>
+                            </div>
+                                            </div>
+                    <div class="button-wrapper">
+                        
+                        <button class="theme-btn start-calibration">Start</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+<!-- End Init Calibration Page  -->
+
+<!-- Start Card Calibration Page -->
+<section id="card_calibration_page" class="page" style="display:none;">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-6 col-sm-8 col-xs-12 col-12 main-wrapper-column">
+                <div class="main-wrapper">
+                    <div class="heading">Step 1 – Calibrate to Card Size</div>
+                    <p class="sub-heading">
+                        Place your card on the screen so that the top dotted line sits just on top of your card. Then use the scroll bar (+ and -) to adjust the screen so that the bottom line sits just underneath your card. <img src="images/info-icon.svg" class="info-icon btn-show-video-guide" title="Show Guide" alt="Information Icon">
+                    </p>
+                    <div class="card-image-wrapper" style="background-size: auto 220px;">
+                        <div class="lines" style="height:224px;"></div>
+                    </div>
+                    <div class="main-range-section range-progress-bar">
+                        <div class="step-button" id="card_resize_decrease">-</div>
+                        <div class="line range-wrapper">
+                            <input type="range" name="qty" step="0.5" min="100" max="400" value="220" class="progress qty" id="card_resize_range">
+                        </div>
+                        <div class="step-button" id="card_resize_increase">+</div>
+                    </div>
+                    <div class="button-wrapper">
+                        <button class="theme-btn btn-go-to" data-page="init_calibration_page">Back</button>
+                        <button class="theme-btn btn-save-calibration">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Card Calibration Page  -->
+
+<!-- Start Ruler Calibration Page -->
+<section id="scale_calibration_page" class="page main-ring-section" style="display:none;">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-6 col-sm-8 col-xs-12 col-12 main-wrapper-column">
+                <div class="main-wrapper text-center">
+                    <div class="heading">Step 1 – Calibrate to Ruler Size</div>
+                    <p class="sub-heading">
+                        Using the centimeter measurement on top, physically place your ruler over the image, aligning 0 to 0. Then, use the scroll bar (+ and -) underneath to match the numbers on the screen to the numbers on your ruler. <img src="images/info-icon.svg" class="info-icon btn-show-video-guide" title="Show Guide" alt="Information Icon">
+                    </p>
+                    <div class="unit-tabs">
+                        <div class="tab mm active" data-unit="mm">CM</div>
+                        <div class="tab inch" data-unit="inch">Inch</div>
+                    </div>
+                    <div class="mm-scale-image-wrapper" style="background-size: 942px;"></div>
+                    <div class="inch-scale-image-wrapper" style="background-size: 942px;display:none;"></div>
+                    <div class="scale-placeholder-wrapper">Place your ruler here</div>
+                    <div class="main-range-section range-progress-bar">
+                        <div class="step-button" id="scale_resize_decrease">-</div>
+                        <div class="line range-wrapper">
+                            <input type="range" name="qty" step="2" min="500" max="2000" value="942" class="progress qty" id="scale_resize_range">
+                        </div>
+                        <div class="step-button" id="scale_resize_increase">+</div>
+                    </div>
+                    <div class="button-wrapper">
+                        <button class="theme-btn btn-go-to" data-page="init_calibration_page">Back</button>
+                        <button class="theme-btn btn-save-calibration">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ruler Calibration Page -->
+
+<!-- Start Measure Your Finger Page -->
+<!-- End Measure Your Finger Page  -->
+
+<!-- Start Convert From Other Units Page -->
+<!-- End Convert From Other Units Page -->
+
+<!-- Start Ring Size Calculator Page -->
+<section id="ring_size_calculator_page" class="page" style="display:none;">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-6 col-sm-8 col-xs-12 col-12">
+                <div class="main-wrapper text-center">
+                    <div class="heading">Step 2 – Measure Your Ring</div>
+                    <p class="sub-heading">
+                        Physically place your ring over the arrows shown in the grid below. Then, adjust the scroll bar (+ and -) so that the tip of each arrow just touches the INSIDE if your ring on the top, bottom, left, and right sides. Note that the tip of the arrows should NOT be hidden by your ring. <img src="images/info-icon.svg" class="info-icon btn-show-video-guide" title="Show Guide" alt="Information Icon">
+                    </p>
+                    <div class="ring-size-wrapper">
+                        <div class="ring-sizer-wrapper">
+                            <div class="ring-sizer">
+                                <div class="left-line"></div>
+                                <div class="top-line"></div>
+                                <div class="right-line"></div>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                        <div class="message"></div>
+                        <div class="main-range-section range-progress-bar">
+                            <div class="step-button" id="ring_resize_decrease">-</div>
+                            <div class="line range-wrapper">
+                                <input type="range" name="qty" step="0.5" value="80" min="50" max="180" class="progress qty" id="ring_resize_range">
+                            </div>
+                            <div class="step-button" id="ring_resize_increase">+</div>
+                        </div>
+                        <div class="size-wrapper">
+                            <p>Your Ring Size is</p>
+                            <div class="ring-measurement-wrapper">
+                                <div class="us-ring-size-caption">
+                                    <img src="images/united-states.svg" class="country-flag" alt="United States Flag Icon">
+                                    <span class="country-caption">US</span>
+                                    <span class="us-ring-size">XX</span>
+                                </div>
+                                <div class="ring-size-caption" style="display:none;">
+                                    <img src="" class="country-flag">
+                                    <span class="country-caption">XX</span>
+                                    <span class="ring-size">XX</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions-wrapper">
+                        <a href="#" class="btn-recalibrate">Recalibrate</a> | <a href="#" class="btn-change-country">Change Country</a>
+                    </div>
+                    <div class="disclaimer"><strong>Disclaimer:</strong> Please choose the US equivalent size while adding your product to the cart.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ring Size Calculator Page  -->
+
+
+<script src="js/jquery-3.6.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/main.js"></script>
+
+
+</body></html>

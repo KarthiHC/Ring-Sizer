@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="149" height="148.645" viewBox="0 0 149 148.645">
+  <g id="Group_1" data-name="Group 1" transform="translate(-204 -710)">
+    <line id="Line_1" data-name="Line 1" y2="143.355" transform="translate(278.5 712.645)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+    <line id="Line_2" data-name="Line 2" y2="143.355" transform="translate(350.177 784.323) rotate(90)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+    <path id="Polygon_1" data-name="Polygon 1" d="M10,0,20,17.647H0Z" transform="translate(268.5 710)"/>
+    <path id="Polygon_2" data-name="Polygon 2" d="M10,0,20,17.647H0Z" transform="translate(353 774.5) rotate(90)"/>
+    <path id="Polygon_3" data-name="Polygon 3" d="M10,0,20,17.647H0Z" transform="translate(204 794.323) rotate(-90)"/>
+    <path id="Polygon_4" data-name="Polygon 4" d="M10,0,20,17.647H0Z" transform="translate(288.5 858.645) rotate(180)"/>
+  </g>
+</svg>
